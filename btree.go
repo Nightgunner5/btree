@@ -98,6 +98,20 @@ func (tree *BTree) Remove(val Value_T) bool {
 	return false
 }
 
+// Returns true if the value exists in the BTree.
+func (tree *BTree) Contains(Value_T val) bool {
+	if val == tree.Value {
+		return true
+	}
+	if val < tree.Value && tree.Left != nil {
+		return tree.Left.Contains(val)
+	}
+	if val > tree.Value && tree.Right != nil {
+		return tree.Right.Contains(val)
+	}
+	return false
+}
+
 // Returns the number of elements in this BTree.
 func (tree *BTree) Length() int {
 	if tree.isset {
