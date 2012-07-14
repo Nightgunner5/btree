@@ -9,6 +9,7 @@ type value_t interface {
 type value_impl_Sortable struct {
 	val Sortable
 }
+
 func (v *value_impl_Sortable) Value() interface{} {
 	return v.val
 }
@@ -21,10 +22,10 @@ func (v *value_impl_Sortable) LessThan(other value_t) bool {
 	return ok && v.val.LessThan(o.val)
 }
 
-
 type value_impl_int struct {
 	val int
 }
+
 func (v *value_impl_int) Value() interface{} {
 	return v.val
 }
@@ -37,10 +38,10 @@ func (v *value_impl_int) LessThan(other value_t) bool {
 	return ok && v.val < o.val
 }
 
-
 type value_impl_uint struct {
 	val uint
 }
+
 func (v *value_impl_uint) Value() interface{} {
 	return v.val
 }
@@ -53,10 +54,10 @@ func (v *value_impl_uint) LessThan(other value_t) bool {
 	return ok && v.val < o.val
 }
 
-
 type value_impl_int8 struct {
 	val int8
 }
+
 func (v *value_impl_int8) Value() interface{} {
 	return v.val
 }
@@ -69,10 +70,10 @@ func (v *value_impl_int8) LessThan(other value_t) bool {
 	return ok && v.val < o.val
 }
 
-
 type value_impl_uint8 struct {
 	val uint8
 }
+
 func (v *value_impl_uint8) Value() interface{} {
 	return v.val
 }
@@ -85,10 +86,10 @@ func (v *value_impl_uint8) LessThan(other value_t) bool {
 	return ok && v.val < o.val
 }
 
-
 type value_impl_int16 struct {
 	val int16
 }
+
 func (v *value_impl_int16) Value() interface{} {
 	return v.val
 }
@@ -101,10 +102,10 @@ func (v *value_impl_int16) LessThan(other value_t) bool {
 	return ok && v.val < o.val
 }
 
-
 type value_impl_uint16 struct {
 	val uint16
 }
+
 func (v *value_impl_uint16) Value() interface{} {
 	return v.val
 }
@@ -117,10 +118,10 @@ func (v *value_impl_uint16) LessThan(other value_t) bool {
 	return ok && v.val < o.val
 }
 
-
 type value_impl_int32 struct {
 	val int32
 }
+
 func (v *value_impl_int32) Value() interface{} {
 	return v.val
 }
@@ -133,10 +134,10 @@ func (v *value_impl_int32) LessThan(other value_t) bool {
 	return ok && v.val < o.val
 }
 
-
 type value_impl_uint32 struct {
 	val uint32
 }
+
 func (v *value_impl_uint32) Value() interface{} {
 	return v.val
 }
@@ -149,10 +150,10 @@ func (v *value_impl_uint32) LessThan(other value_t) bool {
 	return ok && v.val < o.val
 }
 
-
 type value_impl_int64 struct {
 	val int64
 }
+
 func (v *value_impl_int64) Value() interface{} {
 	return v.val
 }
@@ -165,10 +166,10 @@ func (v *value_impl_int64) LessThan(other value_t) bool {
 	return ok && v.val < o.val
 }
 
-
 type value_impl_uint64 struct {
 	val uint64
 }
+
 func (v *value_impl_uint64) Value() interface{} {
 	return v.val
 }
@@ -181,10 +182,10 @@ func (v *value_impl_uint64) LessThan(other value_t) bool {
 	return ok && v.val < o.val
 }
 
-
 type value_impl_string struct {
 	val string
 }
+
 func (v *value_impl_string) Value() interface{} {
 	return v.val
 }
