@@ -7,13 +7,13 @@ import "testing"
 func BenchmarkAddU(b *testing.B) {
 	b.StopTimer()
 	tree := new(BTree)
-	for i := Value_T(0); i < 64; i++ {
+	for i := 0; i < 64; i++ {
 		tree.Add(i)
 	}
 	b.StartTimer()
 
 	for i := 0; i < b.N/64; i++ {
-		for v := Value_T(0); v < 64; v++ {
+		for v := 0; v < 64; v++ {
 			tree.Add(v)
 		}
 	}
@@ -24,14 +24,14 @@ func BenchmarkAddU(b *testing.B) {
 func BenchmarkAddB(b *testing.B) {
 	b.StopTimer()
 	tree := new(BTree)
-	for i := Value_T(0); i < 64; i++ {
+	for i := 0; i < 64; i++ {
 		tree.Add(i)
 	}
 	tree = tree.Balance()
 	b.StartTimer()
 
 	for i := 0; i < b.N/64; i++ {
-		for v := Value_T(0); v < 64; v++ {
+		for v := 0; v < 64; v++ {
 			tree.Add(v)
 		}
 	}
@@ -41,7 +41,7 @@ func BenchmarkAddB(b *testing.B) {
 func BenchmarkLenC(b *testing.B) {
 	b.StopTimer()
 	tree := new(BTree)
-	for i := Value_T(0); i < 64; i++ {
+	for i := 0; i < 64; i++ {
 		tree.Add(i)
 	}
 	tree.Length()
@@ -56,7 +56,7 @@ func BenchmarkLenC(b *testing.B) {
 func BenchmarkLenU(b *testing.B) {
 	b.StopTimer()
 	tree := new(BTree)
-	for i := Value_T(0); i < 64; i++ {
+	for i := 0; i < 64; i++ {
 		tree.Add(i)
 	}
 	b.StartTimer()
@@ -74,7 +74,7 @@ func TestAddRemove(t *testing.T) {
 		t.Errorf("Length() returned %d but %d was expected.", have, want)
 	}
 
-	vals := []Value_T{5, 6, 8, 2}
+	vals := []byte{5, 6, 8, 2}
 
 	for i := range vals {
 		t.Logf("Adding value: %d", vals[i])
@@ -87,7 +87,7 @@ func TestAddRemove(t *testing.T) {
 		}
 	}
 
-	vals = []Value_T{2, 8, 6}
+	vals = []byte{2, 8, 6}
 	for i := range vals {
 		t.Logf("Removing value: %d", vals[i])
 		tree.Remove(vals[i])
