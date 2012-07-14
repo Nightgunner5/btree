@@ -99,7 +99,7 @@ func (tree *BTree) Remove(val Value_T) bool {
 }
 
 // Returns true if the value exists in the BTree.
-func (tree *BTree) Contains(Value_T val) bool {
+func (tree *BTree) Contains(val Value_T) bool {
 	if val == tree.Value {
 		return true
 	}
