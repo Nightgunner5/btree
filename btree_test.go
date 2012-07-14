@@ -2,6 +2,8 @@ package btree
 
 import "testing"
 
+// Benchmarks adding to an unbalanced BTree. (max depth 64)
+// The result is the average of Add() operations in indexes [0:63]
 func BenchmarkAddU(b *testing.B) {
 	b.StopTimer()
 	tree := new(BTree)
@@ -10,13 +12,15 @@ func BenchmarkAddU(b *testing.B) {
 	}
 	b.StartTimer()
 
-	for i := 0; i < b.N; i++ {
+	for i := 0; i < b.N/64; i++ {
 		for v := Value_T(0); v < 64; v++ {
 			tree.Add(v)
 		}
 	}
 }
 
+// Benchmarks adding to a balanced BTree. (max depth 6)
+// The result is the average of Add() operations in indexes [0:63]
 func BenchmarkAddB(b *testing.B) {
 	b.StopTimer()
 	tree := new(BTree)
@@ -26,13 +30,14 @@ func BenchmarkAddB(b *testing.B) {
 	tree = tree.Balance()
 	b.StartTimer()
 
-	for i := 0; i < b.N; i++ {
+	for i := 0; i < b.N/64; i++ {
 		for v := Value_T(0); v < 64; v++ {
 			tree.Add(v)
 		}
 	}
 }
 
+// Benchmarks cached length calculations.
 func BenchmarkLenC(b *testing.B) {
 	b.StopTimer()
 	tree := new(BTree)
@@ -47,6 +52,7 @@ func BenchmarkLenC(b *testing.B) {
 	}
 }
 
+// Benchmarks explicitly uncached length calculations.
 func BenchmarkLenU(b *testing.B) {
 	b.StopTimer()
 	tree := new(BTree)
