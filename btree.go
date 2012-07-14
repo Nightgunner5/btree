@@ -179,7 +179,7 @@ func (tree *BTree) Find(val interface{}) interface{} {
 
 func (tree *BTree) find(val value_t) interface{} {
 	if val.Equals(tree.value) {
-		return tree.value
+		return tree.value.Value()
 	}
 	if val.LessThan(tree.value) && tree.left != nil {
 		return tree.left.find(val)
