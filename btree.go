@@ -156,7 +156,7 @@ func (tree *BTree) remove(val value_t) bool {
 
 // Returns true if the value exists in the BTree.
 func (tree *BTree) Contains(val interface{}) bool {
-	return tree.remove(wrap(val))
+	return tree.contains(wrap(val))
 }
 
 func (tree *BTree) contains(val value_t) bool {
@@ -170,6 +170,24 @@ func (tree *BTree) contains(val value_t) bool {
 		return tree.right.contains(val)
 	}
 	return false
+}
+
+// Returns the value as it exists in the BTree or nil if it does not occur in the BTree.
+func (tree *BTree) Find(val interface{}) interface{} {
+	return tree.find(wrap(val))
+}
+
+func (tree *BTree) find(val value_t) interface{} {
+	if val.Equals(tree.value) {
+		return tree.value
+	}
+	if val.LessThan(tree.value) && tree.left != nil {
+		return tree.left.find(val)
+	}
+	if tree.value.LessThan(val) && tree.right != nil {
+		return tree.right.find(val)
+	}
+	return nil
 }
 
 // Returns the number of elements in this BTree.
